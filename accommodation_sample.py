@@ -1,4 +1,3 @@
-from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 import time
@@ -6,19 +5,20 @@ import urllib.request
 from urllib.request import Request, urlopen, urlretrieve
 
 
-# 셀레니움 설정
+# 셀레니움 설정 
+"""
 options = Options()
 options.add_argument('--headless')  # 창 안 띄우기
 options.add_argument('--no-sandbox')
-options.add_argument('--disable-dev-shm-usage')
-driver = webdriver.Chrome(options=options)
+options.add_argument('--disable-dev-shm-usage') """""
 
 # 검색 조건
 checkin = "2025-05-17"
 checkout = "2025-05-18"
 person = "2"
-region = "서울"
+region = "대구"
 
+#urlopen이 비 ASCII 문자(예: 한글)을 못 받기에 quote로 encod해서 해야함 
 region_encoded = urllib.parse.quote(region)
 url = f"https://www.yeogi.com/domestic-accommodations?keyword={region_encoded}&checkIn={checkin}&checkOut={checkout}&personal={person}&freeForm=false"
 
@@ -33,7 +33,6 @@ page = urlopen(req)
 
 soup = BeautifulSoup(page, "html.parser")
 accommodation_name = []
-
 
 # 숙소 정보 수집
 names = [tag.get_text() for tag in soup.find_all('h3')[:3]]
