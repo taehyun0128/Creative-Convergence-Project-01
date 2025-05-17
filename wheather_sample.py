@@ -3,6 +3,8 @@ import xml.etree.ElementTree as ET
 import pandas as pd
 import matplotlib.pyplot as plt
 
+day = input("year:month:day")
+
 # API 요청 설정
 url = 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst'
 params = {
@@ -10,7 +12,7 @@ params = {
     'pageNo': '1',
     'numOfRows': '1000',
     'dataType': 'XML',
-    'base_date': '20250511',
+    'base_date': day,
     'base_time': '0600',
     'nx': '55',
     'ny': '127'
@@ -44,8 +46,10 @@ for item in items.findall('item'):
     }
     data.append(entry)
 
+
 df = pd.DataFrame(data)
 print(df)
+
 
 # 한글 폰트 설정 (윈도우 전용)
 plt.rcParams['font.family'] = 'Malgun Gothic'
