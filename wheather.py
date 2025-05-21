@@ -52,16 +52,16 @@ sky_map = {'1': '맑음', '3': '구름많음', '4': '흐림'}
 pty_map = {'0': '없음', '1': '비', '2': '비/눈', '3': '눈', '4': '소나기'}
 
 # 출력
-print(f"\n📅 {input_date} ⏰ {input_time} 기준 날씨 정보:")
+print(f"\n {input_date} {input_time} 기준 날씨 정보:")
 for _, row in filtered.iterrows():
     item = row['항목']
     value = row['값']
     
     if item == 'TMP':
-        print(f"🌡️ 기온: {value}℃")
+        print(f" 기온: {value}℃")
     elif item == 'SKY':
-        print(f"🌤️ 하늘 상태: {sky_map.get(value, '알 수 없음')}")
+        print(f" 하늘 상태: {sky_map.get(value, '알 수 없음')}")
     elif item == 'PTY':
-        print(f"🌧️ 강수 형태: {pty_map.get(value, '알 수 없음')}")
+        print(f"강수 형태: {pty_map.get(value, '알 수 없음')}")
     elif item == 'POP':
-        print(f"☔ 강수 확률: {value}%")
+        print(f" 강수 확률: {value}%")
