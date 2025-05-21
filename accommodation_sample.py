@@ -47,7 +47,7 @@ def accomdation(region, checkin, checkout, person):
             print("sold out")
         img_url = images[i]
         urllib.request.urlretrieve(img_url, f"{region}{i+1}.jpg")
-        print(f">>> 이미지 저장 완료: {region}{i+1}.jpg")
+        print(f">>> 이미지 저장 완료: {region}{i+1}.jpg \n")
     print(url)
 
 accomdation("부산", "2025-05-21", "2025-05-22", "2" )
