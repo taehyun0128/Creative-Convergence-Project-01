@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import urllib.request
 from urllib.request import Request, urlopen
 # 검색 조건 
+
 """""
 checkin = "2025-05-17"
 checkout = "2025-05-18"
@@ -29,25 +30,27 @@ def accomdation(region, checkin, checkout, person):
     accommodation_name = []
 
     # 숙소 정보 수집
-    names = [tag.get_text() for tag in soup.find_all('h3')[:3]]
+    names = [tag.get_text() for tag in soup.find_all('h3')[:3]] #숙소이름 저장
     rent = [tag.get_text() for tag in soup.find_all('div', class_='css-sg6wi7')[:3]] #대실,숙박 정보저장 
-    prices = [tag.get_text() for tag in soup.find_all('div', class_='css-yeouz0')[:6]]
-    images = [tag['src'] for tag in soup.find_all('img', alt=True)[:3]]
+    prices = [tag.get_text() for tag in soup.find_all('div', class_='css-yeouz0')[:6]] #
+    images = [tag['src'] for tag in soup.find_all('img', alt=True)[:3]] #이미지링크 저장
+    
     """"
     print(names, rent, prices)
     print(rent[1][0:2])
     """
+
     for i in range(len(names)):
         print(names[i], end=("\t\t "))
-        if(rent[i][0:2]=="대실"):  ## 대실이면 대실 가격을 삭제하고 숙박가격만 출력 
+        if(rent[i][0:2]=="대실"):  # 대실이면 대실 가격을 삭제하고 숙박가격만 출력 
             del prices[i:i+1]
         if(prices[i]):
             print(prices[i])
         else:
             print("sold out")
         img_url = images[i]
-        urllib.request.urlretrieve(img_url, f"{region}{i+1}.jpg")
-        print(f">>> 이미지 저장 완료: {region}{i+1}.jpg \n")
+        urllib.request.urlretrieve(img_url, f"{region} 숙소{i+1}.jpg")
+        print(f">>> 이미지 저장 완료: {region} 숙소{i+1}.jpg \n")
     print(url)
 
-accomdation("부산", "2025-05-21", "2025-05-22", "2" )
+accomdation("수성못", "2025-05-21", "2025-05-22", "2" )
