@@ -6,14 +6,24 @@ from datetime import timedelta
 
 # 단기 예보용 지역 좌표
 region_xy = {
-    "서울": [60, 126],
-    "부산": [98, 75],
-    "대구": [89, 91],
-    "인천": [54, 125],
+    "강원": [83, 130],
+    "경기": [61, 124],
+    "경남": [85, 77],
+    "경북": [91, 100],
     "광주": [59, 74],
+    "대구": [89, 91],
     "대전": [67, 100],
+    "부산": [98, 75],
+    "서울": [60, 126],
+    "세종": [65, 104],
     "울산": [102, 84],
-    "세종": [65, 104]
+    "인천": [54, 125],
+    "전남": [60, 68],
+    "전북": [62, 87],
+    "제주": [53, 36],
+    "충남": [58, 104],
+    "충북": [73, 109]
+
 }
 
 # 중기 예보용 지역 코드
@@ -41,7 +51,7 @@ sky_map = {'1': '맑음', '3': '구름많음', '4': '흐림'}
 pty_map = {'0': '없음', '1': '비', '2': '비/눈', '3': '눈', '4': '소나기'}
 
 # 발급받은 기상청 API 키
-service_key = '여기에_발급받은_API_KEY_입력'
+service_key = 'AdOnJCf1h6c12+MPkWOpvKxFe9q3XeC04ulEybksva9uaAdvXGc1onNOdLZ3TlBdJ4XMk0Sey+xWRKO3rQ+/4A=='
 
 # 단기 예보 base 시간 계산
 def get_base_datetime():
@@ -60,7 +70,7 @@ def get_short_term_forecast(date, region_name):
 
     url = 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst'
     params = {
-        'serviceKey': 'AdOnJCf1h6c12+MPkWOpvKxFe9q3XeC04ulEybksva9uaAdvXGc1onNOdLZ3TlBdJ4XMk0Sey+xWRKO3rQ+/4A==',
+        'serviceKey': service_key,
         'pageNo': '1',
         'numOfRows': '1000',
         'dataType': 'XML',
@@ -123,7 +133,7 @@ def get_mid_term_forecast(date, region_name):
     # 육상 예보
     url_land = 'http://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst'
     params_land = {
-        'serviceKey': 'AdOnJCf1h6c12+MPkWOpvKxFe9q3XeC04ulEybksva9uaAdvXGc1onNOdLZ3TlBdJ4XMk0Sey+xWRKO3rQ+/4A==',
+        'serviceKey': service_key,
         'pageNo': '1',
         'numOfRows': '10',
         'dataType': 'XML',
@@ -151,7 +161,7 @@ def get_mid_term_forecast(date, region_name):
     # 기온 예보
     url_temp = 'http://apis.data.go.kr/1360000/MidFcstInfoService/getMidTa'
     params_temp = {
-        'serviceKey': 'AdOnJCf1h6c12+MPkWOpvKxFe9q3XeC04ulEybksva9uaAdvXGc1onNOdLZ3TlBdJ4XMk0Sey+xWRKO3rQ+/4A==',
+        'serviceKey': service_key,
         'pageNo': '1',
         'numOfRows': '10',
         'dataType': 'XML',
