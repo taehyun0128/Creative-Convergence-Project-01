@@ -3,7 +3,8 @@ import xml.etree.ElementTree as ET
 import pandas as pd
 import matplotlib.pyplot as plt
 
-day = input("year:month:day")
+day = input("year:month:day ex) 20250521 |")
+time = input("time ex)0600 |")
 
 # API 요청 설정
 url = 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst'
@@ -13,7 +14,7 @@ params = {
     'numOfRows': '1000',
     'dataType': 'XML',
     'base_date': day,
-    'base_time': '0600',
+    'base_time': time,
     'nx': '55',
     'ny': '127'
 }
@@ -49,19 +50,3 @@ for item in items.findall('item'):
 
 df = pd.DataFrame(data)
 print(df)
-
-
-# 한글 폰트 설정 (윈도우 전용)
-plt.rcParams['font.family'] = 'Malgun Gothic'
-plt.rcParams['axes.unicode_minus'] = False
-
-# 그래프 그리기
-plt.figure(figsize=(10, 6))
-plt.bar(df['항목'], df['값'], color='skyblue')
-plt.title('기상청 초단기 실황 데이터 시각화')
-plt.xlabel('항목')
-plt.ylabel('측정값')
-plt.xticks(rotation=45)
-plt.tight_layout()
-plt.grid(True, axis='y', linestyle='--', alpha=0.7)
-plt.show()
