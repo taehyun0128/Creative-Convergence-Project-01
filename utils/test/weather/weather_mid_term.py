@@ -95,6 +95,6 @@ def get_mid_weather(date_str, region_name):
 
 
 # ===== 사용자 입력 =====
-date_input = input("날짜를 입력하세요 (예: 2025-06-06): ")
+date_input = input("날짜를 입력하세요 (예: 2025-06-10): ")
 region_input = input("지역을 입력하세요 (예: 서울, 부산, 대전): ")
 print(get_mid_weather(date_input, region_input.strip()))

@@ -315,7 +315,8 @@ def open_region_window(region, master):
     weather_canvas.pack(fill="x", padx=20, pady=(0,10))
     h_scroll.pack(fill="x", padx=20)
 
-    #관광지 랭킹 버튼 이벤트함수
+    #관광지 랭킹
+    # ✅ 여행지 순위 UI 수정:
     def on_show_ranking():
         for w in weather_scroll_frame.winfo_children(): w.destroy()
 
@@ -358,7 +359,6 @@ def open_region_window(region, master):
 
 
     # (중요!) 날씨 출력 로직 그대로 여기 안에 복사
-    #날씨 버튼 이벤트함수
     def on_show_weather():
         sd, ed = cal_frame.get_selected_range()
         if not sd or not ed:
