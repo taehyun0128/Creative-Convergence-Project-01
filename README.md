@@ -4,7 +4,7 @@
 ## 📁 프로젝트 구성
 
 ```
-trip-main/
+Creative-Convergence-Project-01/
 ├── check.py               # 메인 GUI 애플리케이션 (클라이언트 역할)
 ├── server.py              # UDP 기반 조회수 수신 서버
 ├── weather.py             # 날씨 정보 처리 모듈 (기상청 OpenAPI 활용)
